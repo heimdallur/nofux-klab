@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nofux-lab
+  namespace: argocd
+spec:
+  destination:
+    namespace: nofux-lab
+    server: https://kubernetes.default.svc
+  source:
+  repoUrl: https://github.com/heimdallur/nofux-klab.git
+  project: 
