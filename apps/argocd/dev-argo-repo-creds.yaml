@@ -10,4 +10,4 @@ stringData:
   url: https://github.com/heimdallur/nofux-klab
   password: ${{ secrets.ARGOCD_KLAB }}
   username: argocd-klab
-  project: default
+  project: ArgoCD
