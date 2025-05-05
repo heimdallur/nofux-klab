@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: dev-grafana
+spec:
+  project: dev-grafana
+  source:
+    repoURL: 'https://your-git-server/yourorg/gitops-repo.git'
+    path: apps/dev-grafana
+    targetRevision: main          # or whatever branch you use
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev-grafana
+  syncPolicy:
+    automated:
+      prune: true               # deletes resources removed from Git
+      selfHeal: true            # reverts manual drift
+    syncOptions:
+      - CreateNamespace=true    # in case the namespace doesn’t yet exist
