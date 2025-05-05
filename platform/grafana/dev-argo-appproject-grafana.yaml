@@ -6,10 +6,7 @@ metadata:
 spec:
   destinations:
   - name: in-cluster
-    namespace: grafana
-    server: https://kubernetes.default.svc
-  - name: in-cluster
-    namespace: argocd
+    namespace: '*''
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/heimdallur/nofux-klab.git
