@@ -30,11 +30,9 @@ This repository contains all of the code, configuration and documentation needed
 
 ```text
 .
-├── envs/
-  ├── development/
-    ├── apps/
-    ├── platform/
-      ├── argocd/
-  ├── staging/
-  ├── production/
+├── apps/
+├── platform/
+    ├── argocd/
+├── platform/
+├── clusters/
 └── README.md
