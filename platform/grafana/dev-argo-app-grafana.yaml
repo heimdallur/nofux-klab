@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: grafana
-  namespace: argocd
+  namespace: grafana
 spec:
   destination:
-    namespace: argocd
+    namespace: grafana
     server: https://kubernetes.default.svc
   project: grafana
   source:
-    path: platform/argocd/
+    path: platform/grafana/
     repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: main
   syncPolicy:
