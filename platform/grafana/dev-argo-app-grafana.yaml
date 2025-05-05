@@ -11,7 +11,7 @@ metadata:
   source:
     path: platform/grafana/
     repoURL: https://github.com/heimdallur/nofux-klab
-    targetRevision: main
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
