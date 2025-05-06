@@ -3,12 +3,7 @@ kind: Application
 metadata:
   name: grafana
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: grafana
-    server: https://kubernetes.default.svc
   project: grafana
   sources:
   - repoURL: https://github.com/heimdallur/nofux-klab/
@@ -30,37 +25,6 @@ spec:
           server:
             http_port: 8055
             instance_name: "Klab Grafana"
-        datasources:
-          datasources.yaml:
-            apiVersion: 1
-            datasources:
-              - name: Prometheus
-                type: prometheus
-                url: http://prometheus-server.monitoring.svc.cluster.local
-                access: proxy
-                isDefault: true
-              - name: loki
-                type: loki
-                url: http://loki.monitoring.svc.cluster.local
-                access: proxy
-        dashboardProviders:
-          dashboardproviders.yaml:
-            apiVersion: 1
-            providers:
-              - name: "default"
-                orgId: 1
-                folder: ""
-                type: file
-                disableDeletion: false
-                editable: true
-                options:
-                  path: /var/lib/grafana/dashboards/default
-        dashboards:
-          default:
-            kubernetes:
-              gnetId: 10000
-              revision: 1
-              datasource: Prometheus
   syncPolicy:
     automated:
       prune: true
