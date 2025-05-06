@@ -21,8 +21,6 @@ spec:
         persistence:
           enabled: true
           size: 5Gi
-        adminUser: klab
-        adminPassword: {{ secrets.GRAFANA_PASSWORD }}
         grafana.ini:
           server:
             http_port: 8055
