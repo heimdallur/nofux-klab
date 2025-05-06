@@ -21,6 +21,8 @@ spec:
         persistence:
           enabled: true
           size: 5Gi
+        adminUser: klab
+        adminPassword: admin-password
         grafana.ini:
           server:
             http_port: 8055
@@ -62,4 +64,3 @@ spec:
       selfHeal: true
     syncOptions:
     - CreateNamespace=true
-    

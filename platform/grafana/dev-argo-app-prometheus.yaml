@@ -1,4 +1,3 @@
-# Description: Prometheus application for ArgoCD############################################
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -7,21 +6,22 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: prometheus
-    server: https://kubernetes.default.svc
   project: prometheus
-  sources:
-    - repoURL: https://github.com/heimdallur/nofux-klab.git
-      targetRevision: HEAD
-    - repoURL: https://prometheus-community.github.io/helm-charts/
-      chart: prometheus
-      targetRevision: 19.7.2
-      helm:
-        values: |
-            server:
-              service:
-                type: LoadBalancer
+
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts/
+    chart: prometheus
+    targetRevision: 19.7.2
+    helm:
+      values: |
+        server:
+          service:
+            type: LoadBalancer
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prometheus
+
   syncPolicy:
     automated:
       prune: true
