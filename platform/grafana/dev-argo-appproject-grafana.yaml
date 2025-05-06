@@ -10,3 +10,4 @@ spec:
     server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/heimdallur/nofux-klab.git
+  - https://grafana.github.io/helm-charts
