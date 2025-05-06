@@ -10,8 +10,8 @@ spec:
     namespace: grafana
     server: https://kubernetes.default.svc
   project: grafana
-  sources:
-  - repoURL: https://grafana.github.io/helm-charts
+  source:
+    repoURL: https://grafana.github.io/helm-charts
     chart: grafana
     targetRevision: 6.52.2
     helm:

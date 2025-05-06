@@ -3,7 +3,7 @@ persistence:
   size: 5Gi
 
 adminUser: klab
-adminPassword: {{ secrets.GRAFANA_PASSWORD }}
+adminPassword: strongpassword
 
 service:
   type: LoadBalancer
