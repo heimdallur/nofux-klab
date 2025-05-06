@@ -6,4 +6,10 @@ adminUser: klab
 adminPassword: {{ secrets.GRAFANA_PASSWORD }}
 
 service:
-  type: LoadBalancer   # or ClusterIP if you front it with an Ingress
+  type: LoadBalancer
+
+grafana.ini:
+  server:
+    http_port: 8055
+    instance_name: "Klab Grafana"
+    
