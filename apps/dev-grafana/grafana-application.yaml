@@ -2,19 +2,35 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: grafana
-  namespace: grafana
+  namespace: argocd
 spec:
-  project: dev-grafana
-  source:
-    repoURL: 'https://your-git-server/yourorg/gitops-repo.git'
-    path: monitoring/grafana
-    targetRevision: main          # or whatever branch you use
   destination:
     server: https://kubernetes.default.svc
-    namespace: grafana
+    namespace: grafana  
+  project: grafana
+  sources:
+  - repoURL: https://github.com/heimdallur/nofux-klab
+    targetRevision: HEAD
+    path: platform/grafana
+  - repoURL: https://grafana.github.io/helm-charts
+    chart: grafana
+    targetRevision: 6.52.2
+    helm:
+      values: |
+        service:
+          type: LoadBalancer
+        persistence:
+          enabled: true
+          size: 5Gi
+        adminUser: klab
+        adminPassword: admin-password
+        grafana.ini:
+          server:
+            http_port: 8055
+            instance_name: "Klab Grafana"
   syncPolicy:
     automated:
-      prune: true               # deletes resources removed from Git
-      selfHeal: true            # reverts manual drift
+      prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true    # in case the namespace doesn’t yet exist
+    - CreateNamespace=true
