@@ -1,7 +1,7 @@
 persistence:
   enabled: true
+  storageClassName: local-path
   size: 5Gi
-  storageClassName: managed-premium
   accessModes:
     - ReadWriteOnce
 
