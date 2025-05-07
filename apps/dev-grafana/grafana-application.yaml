@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: grafana
-  namespace: dev-grafana
+  namespace: grafana
 spec:
   project: dev-grafana
   source:
     repoURL: 'https://your-git-server/yourorg/gitops-repo.git'
-    path: apps/dev-grafana
+    path: monitoring/grafana
     targetRevision: main          # or whatever branch you use
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev-grafana
+    namespace: grafana
   syncPolicy:
     automated:
       prune: true               # deletes resources removed from Git
