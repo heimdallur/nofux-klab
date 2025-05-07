@@ -4,10 +4,25 @@ metadata:
   name: grafana
   namespace: argocd
 spec:
+  # Where this project is allowed to deploy
   destinations:
   - name: in-cluster
     namespace: '*'
     server: https://kubernetes.default.svc
+
+  # Which Git repos it’s allowed to track
   sourceRepos:
   - https://github.com/heimdallur/nofux-klab
   - https://grafana.github.io/helm-charts
+
+  # === NEW: allow cluster-scoped RBAC resources ===
+  clusterResourceWhitelist:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+
+  # === NEW: allow creation of Namespaces ===
+  namespaceResourceWhitelist:
+  - group: ""      # core API
+    kind: Namespace
