@@ -2,7 +2,10 @@ adminUser: klab
 adminPassword: strongpassword
 
 service:
-  type: LoadBalancer
+  type: NodePort
+  port: 8056
+  targetPort: 3000
+  nodePort: 32080
 
 grafana.ini:
   server:
