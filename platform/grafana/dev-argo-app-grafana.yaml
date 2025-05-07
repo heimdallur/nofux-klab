@@ -4,6 +4,9 @@ metadata:
   name: grafana
   namespace: argocd
 spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: grafana  
   project: grafana
   sources:
   - repoURL: https://github.com/heimdallur/nofux-klab/
