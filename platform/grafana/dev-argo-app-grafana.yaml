@@ -9,7 +9,7 @@ spec:
     namespace: grafana  
   project: grafana
   sources:
-  - repoURL: https://github.com/heimdallur/nofux-klab/
+  - repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: HEAD
     path: platform/grafana
   - repoURL: https://grafana.github.io/helm-charts
