@@ -15,19 +15,6 @@ spec:
   - repoURL: https://grafana.github.io/helm-charts
     chart: grafana
     targetRevision: 6.52.2
-    helm:
-      values: |
-        service:
-          type: LoadBalancer
-        persistence:
-          enabled: true
-          size: 5Gi
-        adminUser: klab
-        adminPassword: admin-password
-        grafana.ini:
-          server:
-            http_port: 8055
-            instance_name: "Klab Grafana"
   syncPolicy:
     automated:
       prune: true
