@@ -7,9 +7,3 @@ service:
   targetPort: 3000
   nodePort: 32080   # exposed on each node at 32080
   metallb.universe.ref/allow-shared-ip: "true"
-
-grafana.ini:
-  server:
-    http_port: 8055
-    instance_name: "Klab Grafana"
-    
