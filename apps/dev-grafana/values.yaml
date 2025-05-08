@@ -2,8 +2,19 @@ adminUser: klab
 adminPassword: strongpassword
 
 service:
-  type: NodePort
-  port: 3000        # clients will talk to Grafana on :3000
-  targetPort: 3000
-  nodePort: 32080   # exposed on each node at 32080
-  metallb.universe.ref/allow-shared-ip: "true"
+  type: NodePort        # or keep ClusterIP if behind an Ingress
+  port: 8055            # Service port (clients connect here)
+  targetPort: 8055      # must match your containerPort below
+  nodePort: 30055       # (only for NodePort) the node’s actual port; pick 30000–32767
+
+env:
+  GF_SERVER_HTTP_PORT: "8055"
+
+grafana.ini:
+  server:
+    http_port: 8055
+
+# (Optionally override the containerPort in the chart’s template, if needed:)
+deployment:
+  containerPorts:
+    http: 8055
