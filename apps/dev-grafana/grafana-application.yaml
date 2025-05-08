@@ -16,6 +16,8 @@ spec:
     chart: grafana
     targetRevision: 6.52.2
     helm:
+      valueFiles:
+        - values.yaml
       values: |
         service:
           type: LoadBalancer
