@@ -2,9 +2,10 @@ adminUser: klab
 adminPassword: strongpassword
 
 service:
-  type: LoadBalancer
-  port: 8055
-  targetPort: 8055
+  type: NodePort
+  port:       8055     # clients inside the cluster talk to this
+  targetPort: 8055     # containerPort on the pod
+  nodePort:   30055    # the host port (30000–32767) for external access
 
 env:
   GF_SERVER_HTTP_PORT: "8055"
