@@ -13,7 +13,6 @@ grafana.ini:
   server:
     http_port: 8055
 
-# (Optionally override the containerPort in the chart’s template, if needed:)
 deployment:
   containerPorts:
     http: 8055
