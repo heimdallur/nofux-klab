@@ -17,7 +17,7 @@ spec:
     targetRevision: 6.52.2
     helm:
       valueFiles:
-        - values.yaml
+        - /apps/dev-grafana/values.yaml
   syncPolicy:
     automated:
       prune: true
