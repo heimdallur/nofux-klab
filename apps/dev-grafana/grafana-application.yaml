@@ -25,7 +25,7 @@ spec:
         # 2) Expose via MetalLB on 8055
         service:
           type: LoadBalancer
-          loadBalancerIP: "10.105.146.84"      # your MetalLB IP
+          loadBalancerIP: "192.168.68.75"      # your MetalLB IP
           annotations:
             metallb.universe.tf/address-pool: cheap
             metallb.universe.tf/allow-shared-ip: "true"
