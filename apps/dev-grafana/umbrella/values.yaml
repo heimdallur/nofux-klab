@@ -5,7 +5,7 @@ grafana:
   service:
     type: LoadBalancer
     # bind to your single MetalLB IP
-    loadBalancerIP: "10.105.146.84"
+    loadBalancerIP: "192.168.68.75"
     annotations:
       # select the pool
       metallb.universe.tf/address-pool: cheap
