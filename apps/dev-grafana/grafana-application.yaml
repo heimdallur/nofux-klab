@@ -10,7 +10,7 @@ spec:
     namespace: grafana
   source:
     repoURL: https://github.com/heimdallur/nofux-klab
-    targetRevision: main               # your Git branch
+    targetRevision: main
     path: apps/dev-grafana/umbrella
     helm:
       valueFiles:
