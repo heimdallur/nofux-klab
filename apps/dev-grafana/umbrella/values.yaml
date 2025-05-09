@@ -12,7 +12,7 @@ grafana:
       # allow other services to use the same IP on other ports
       metallb.universe.tf/allow-shared-ip: "true"
     ports:
-      - name: http
+      - name: service
         port: 8055
         targetPort: 8055
 
