@@ -1,4 +1,4 @@
-grafana-umbrella:
+grafana:
   adminUser: klab
   adminPassword: strongpassword
 

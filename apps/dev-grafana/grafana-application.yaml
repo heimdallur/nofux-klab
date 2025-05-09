@@ -8,13 +8,17 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: grafana
+
   source:
     repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: main
     path: apps/dev-grafana/umbrella
+
     helm:
+      dependencyUpdate: true
       valueFiles:
         - values.yaml
+
   syncPolicy:
     automated:
       prune: true
