@@ -4,17 +4,14 @@ metadata:
   name: grafana
   namespace: argocd
 spec:
+  project: grafana
   destination:
     server: https://kubernetes.default.svc
-    namespace: grafana  
-  project: grafana
-  sources:
-  - repoURL: https://github.com/heimdallur/nofux-klab
-    targetRevision: HEAD
-    path: platform/grafana
-  - repoURL: https://grafana.github.io/helm-charts
-    chart: grafana
-    targetRevision: 6.52.2
+    namespace: grafana
+  source:
+    repoURL: https://github.com/heimdallur/nofux-klab
+    targetRevision: main
+    path: apps/dev-grafana/umbrella
     helm:
       valueFiles:
         - values.yaml
@@ -23,4 +20,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
