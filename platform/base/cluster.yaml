@@ -1,0 +1,10 @@
+apiVersion: v1alpha1
+kind: Config
+metadata:
+  name: klab
+
+network:
+  provider: flannel
+  resolvConf: |-
+    nameserver 192.168.68.55
+    nameserver 1.1.1.1
