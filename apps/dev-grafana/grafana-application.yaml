@@ -9,15 +9,31 @@ spec:
     server: https://kubernetes.default.svc
     namespace: grafana
   source:
-    repoURL: https://github.com/heimdallur/nofux-klab
-    target: main
-    path: apps/dev-grafana
+    repoURL: https://grafana.github.io/helm-charts
+    chart:    grafana
+    targetRevision: 6.52.2
     helm:
-      repoURL: https://grafana.github.io/helm-charts
-      chart: grafana
-      targetRevision: 7.0.0
-      valueFiles:
-        - values.yaml
+      values: |
+        adminUser: klab
+        adminPassword: strongpassword
+
+        # 1) Have Grafana listen on 8055
+        grafana.ini:
+          server:
+            http_port: 8055
+
+        # 2) Expose via MetalLB on 8055
+        service:
+          type: LoadBalancer
+          loadBalancerIP: "10.105.146.84"      # your MetalLB IP
+          annotations:
+            metallb.universe.tf/address-pool: cheap
+            metallb.universe.tf/allow-shared-ip: "true"
+          port: 8055                          # external port
+          targetPort: 8055                    # must match http_port
+          protocol: TCP
+          name: http
+
   syncPolicy:
     automated:
       prune: true
