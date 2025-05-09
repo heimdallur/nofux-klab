@@ -1,4 +1,4 @@
-apiVerison: v2
+apiVersion: v2
 name: grafana-umbrella
 description: Grafana Umbrella Chart
 
