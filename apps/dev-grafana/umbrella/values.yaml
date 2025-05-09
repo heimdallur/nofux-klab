@@ -4,17 +4,14 @@ grafana:
 
   service:
     type: LoadBalancer
-    # bind to your single MetalLB IP
-    loadBalancerIP: "10.105.146.84"
+    loadBalancerIP: "192.168.68.75"
     annotations:
       metallb.universe.tf/address-pool: cheap
       metallb.universe.tf/allow-shared-ip: "true"
-    ports:
-      - name: service
-        port: 8055
-        nodePort: 8055
-        protocol: TCP
-        targetPort: 3000
+    port: 8055
+    targetPort: 8055
+    protocol: TCP
+    name: http
 
   grafana.ini:
     server:
