@@ -1,40 +1,26 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: grafana
-  namespace: argocd
 spec:
-  project: grafana
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: grafana
   source:
-    repoURL: https://grafana.github.io/helm-charts
-    chart: grafana
-    targetRevision: 6.52.2
+    repoURL: https://github.com/heimdallur/nofux-klab
+    targetRevision: main               # your Git branch
+    path: charts/charts/grafana
     helm:
-      values: |
-        adminUser: klab
-        adminPassword: strongpassword
+      valueFiles:
+        - values.yaml
+      # values: |
+      #   adminUser: klab
+      #   adminPassword: strongpassword
 
-        grafana.ini:
-          server:
-            http_port: 8055
+      #   grafana.ini:
+      #     server:
+      #       http_port: 8055
 
-        service:
-          type: LoadBalancer
-          loadBalancerIP: "192.168.68.75"
-          annotations:
-            metallb.universe.tf/address-pool: cheap
-            metallb.universe.tf/allow-shared-ip: "true"
-          port: 8055
-          targetPort: 8055
-          protocol: TCP
-          name: http
-
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+      #   service:
+      #     type: LoadBalancer
+      #     loadBalancerIP: "192.168.68.75"
+      #     annotations:
+      #       metallb.universe.tf/address-pool: cheap
+      #       metallb.universe.tf/allow-shared-ip: "true"
+      #     port: 8055
+      #     targetPort: 8055
+      #     protocol: TCP
+      #     name: http
