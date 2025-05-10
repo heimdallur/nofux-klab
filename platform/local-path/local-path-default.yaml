@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: main
-    path: platform/local-path/local-path-default.yaml
+    path: platform/local-path
 
   destination:
     server: https://kubernetes.default.svc
