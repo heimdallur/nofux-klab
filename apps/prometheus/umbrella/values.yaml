@@ -5,8 +5,8 @@ grafana:
   service:
     type: LoadBalancer
     name: http
-    port: 8055
-    targetPort: 8055
+    port: 8056
+    targetPort: 8056
     loadBalancerIP: "192.168.68.75"
     annotations:
       metallb.universe.tf/address-pool: cheap
@@ -18,12 +18,12 @@ grafana:
 
   grafana.ini:
     server:
-      http_port: 8055
+      http_port: 8056
 
   readinessProbe:
     httpGet:
       path: /api/health
-      port: 8055
+      port: 8056
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
@@ -32,7 +32,7 @@ grafana:
   livenessProbe:
     httpGet:
       path: /api/health
-      port: 8055
+      port: 8056
     initialDelaySeconds: 60
     periodSeconds: 30
     timeoutSeconds: 5
@@ -41,6 +41,6 @@ grafana:
   startupProbe:
     httpGet:
       path: /api/health
-      port: 8055
+      port: 8056
     periodSeconds: 10
     failureThreshold: 30
