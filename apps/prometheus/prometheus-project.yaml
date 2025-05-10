@@ -36,9 +36,9 @@ spec:
     - group: apps
       kind: Deployment
     - group: apps
-      kind: StatefulSet      # ← allow apps/v1 StatefulSets
+      kind: StatefulSet
     - group: apps
-      kind: DaemonSet        # ← allow apps/v1 DaemonSets
+      kind: DaemonSet
     - group: rbac.authorization.k8s.io
       kind: Role
     - group: rbac.authorization.k8s.io
