@@ -4,24 +4,16 @@ metadata:
   name: prometheus
   namespace: argocd
 spec:
-  destinations:
-  - name: in-cluster
-    namespace: '*'
-    server: https://kubernetes.default.svc
-  sourceRepos:
-  - https://github.com/heimdallur/nofux-klab.git
-  - https://prometheus-community.github.io/helm-charts
+  # … destinations & sourceRepos omitted for brevity …
 
-      # Cluster-scoped resources Prometheus will create
   clusterResourceWhitelist:
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRole
-  - group: rbac.authorization.k8s.io
-    kind: ClusterRoleBinding
-  - group: ""
-    kind: Namespace
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+    - group: ""
+      kind: Namespace
 
-  # Namespaced resources Prometeus will create
   namespaceResourceWhitelist:
     - group: ""
       kind: PersistentVolumeClaim
@@ -36,9 +28,9 @@ spec:
     - group: apps
       kind: Deployment
     - group: apps
-      kind: StatefulSet
+      kind: StatefulSet      # ← must be here
     - group: apps
-      kind: DaemonSet
+      kind: DaemonSet        # ← must be here
     - group: rbac.authorization.k8s.io
       kind: Role
     - group: rbac.authorization.k8s.io
