@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: local-path-provisioner
+  namespace: prometheus
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/heimdallur/nofux-klab
+    targetRevision: main
+    path: platform/local-path/local-path-default.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: local-path-storage
+
+  syncPolicy:
+    automated:
+      prune: true        # remove resources no longer tracked
+      selfHeal: true     # revert out-of-band changes
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m

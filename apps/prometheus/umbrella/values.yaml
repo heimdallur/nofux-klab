@@ -15,4 +15,3 @@ grafana:
   image:
     repository: prometheus-community/prometheus
     tag: 27.13.0
-
