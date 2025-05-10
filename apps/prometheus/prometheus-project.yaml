@@ -31,6 +31,10 @@ spec:
     kind: Secret
   - group: ""         
     kind: ConfigMap
+  - group: StatefulSet.apps
+    kind: ""
+  - group: "DaemonSet.apps"
+    kind: ""
   - group: ""         
     kind: Service
   - group: apps
