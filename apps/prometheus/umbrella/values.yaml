@@ -13,34 +13,6 @@ grafana:
       metallb.universe.tf/allow-shared-ip: "true"
 
   image:
-    repository: grafana/grafana
-    tag: 9.0.0
+    repository: prometheus-community/prometheus
+    tag: 27.13.0
 
-  grafana.ini:
-    server:
-      http_port: 8056
-
-  readinessProbe:
-    httpGet:
-      path: /api/health
-      port: 8056
-    initialDelaySeconds: 30
-    periodSeconds: 10
-    timeoutSeconds: 5
-    failureThreshold: 6
-
-  livenessProbe:
-    httpGet:
-      path: /api/health
-      port: 8056
-    initialDelaySeconds: 60
-    periodSeconds: 30
-    timeoutSeconds: 5
-    failureThreshold: 6
-
-  startupProbe:
-    httpGet:
-      path: /api/health
-      port: 8056
-    periodSeconds: 10
-    failureThreshold: 30
