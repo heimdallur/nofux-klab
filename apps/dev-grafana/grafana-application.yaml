@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: main
-    path: apps/dev-grafana/umbrella
+    path: apps/prometheus/umbrella
 
     helm:
       dependencyUpdate: true
