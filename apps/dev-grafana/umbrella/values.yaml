@@ -1,4 +1,6 @@
-prometheus:
+grafana:
+  adminUser: klab
+  adminPassword: strongpassword
 
   service:
     type: LoadBalancer
@@ -10,8 +12,32 @@ prometheus:
       metallb.universe.tf/address-pool: cheap
       metallb.universe.tf/allow-shared-ip: "true"
 
+  image:
+    repository: grafana/grafana
+    tag: 72.3.0
+
+
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: 8055
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+
   livenessProbe:
-  httpGet:
-    path: /user/login
-    port: 8056
-  initialDelaySeconds: 120
+    httpGet:
+      path: /api/health
+      port: 8055
+    initialDelaySeconds: 60
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 6
+
+  startupProbe:
+    httpGet:
+      path: /api/health
+      port: 8055
+    periodSeconds: 10
+    failureThreshold: 30
