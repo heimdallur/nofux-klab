@@ -15,7 +15,6 @@ spec:
     path: apps/prometheus/umbrella
 
     helm:
-      dependencyUpdate: true
       valueFiles:
         - values.yaml
 
@@ -25,3 +24,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+  

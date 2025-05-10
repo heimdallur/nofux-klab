@@ -11,3 +11,35 @@ spec:
   sourceRepos:
   - https://github.com/heimdallur/nofux-klab.git
   - https://prometheus-community.github.io/helm-charts
+
+      # Cluster-scoped resources Prometheus will create
+  clusterResourceWhitelist:
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+  - group: ""
+    kind: Namespace
+
+  # Namespaced resources Prometeus will create
+  namespaceResourceWhitelist:
+  - group: ""
+    kind: PersistentVolumeClaim
+  - group: ""         
+    kind: ServiceAccount
+  - group: ""         
+    kind: Secret
+  - group: ""         
+    kind: ConfigMap
+  - group: ""         
+    kind: Service
+  - group: apps
+    kind: Deployment
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+  - group: argoproj.io
+    kind: Application
+  - group: argoproj.io
+    kind: AppProject
