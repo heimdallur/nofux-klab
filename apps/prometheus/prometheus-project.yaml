@@ -23,27 +23,27 @@ spec:
 
   # Namespaced resources Prometeus will create
   namespaceResourceWhitelist:
-  - group: ""
-    kind: PersistentVolumeClaim
-  - group: ""         
-    kind: ServiceAccount
-  - group: ""         
-    kind: Secret
-  - group: ""         
-    kind: ConfigMap
-  - group: StatefulSet
-    kind: ""
-  - group: "DaemonSet"
-    kind: ""
-  - group: ""         
-    kind: Service
-  - group: apps
-    kind: Deployment
-  - group: rbac.authorization.k8s.io
-    kind: Role
-  - group: rbac.authorization.k8s.io
-    kind: RoleBinding
-  - group: argoproj.io
-    kind: Application
-  - group: argoproj.io
-    kind: AppProject
+    - group: ""
+      kind: PersistentVolumeClaim
+    - group: ""
+      kind: ServiceAccount
+    - group: ""
+      kind: Secret
+    - group: ""
+      kind: ConfigMap
+    - group: ""
+      kind: Service
+    - group: apps
+      kind: Deployment
+    - group: apps
+      kind: StatefulSet      # ← allow apps/v1 StatefulSets
+    - group: apps
+      kind: DaemonSet        # ← allow apps/v1 DaemonSets
+    - group: rbac.authorization.k8s.io
+      kind: Role
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+    - group: argoproj.io
+      kind: Application
+    - group: argoproj.io
+      kind: AppProject
