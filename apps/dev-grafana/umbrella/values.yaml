@@ -16,6 +16,9 @@ grafana:
     repository: grafana/grafana
     tag: 9.0.0
 
+  grafana.ini:
+    server:
+      http_port: 8055
 
   readinessProbe:
     httpGet:
