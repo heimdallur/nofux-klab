@@ -23,7 +23,7 @@ grafana:
   readinessProbe:
     httpGet:
       path: /api/health
-      port: http
+      port: 8055
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
@@ -32,7 +32,7 @@ grafana:
   livenessProbe:
     httpGet:
       path: /api/health
-      port: http
+      port: 8055
     initialDelaySeconds: 60
     periodSeconds: 30
     timeoutSeconds: 5
@@ -41,6 +41,6 @@ grafana:
   startupProbe:
     httpGet:
       path: /api/health
-      port: http
+      port: 8055
     periodSeconds: 10
     failureThreshold: 30
