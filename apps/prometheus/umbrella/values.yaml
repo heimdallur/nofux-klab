@@ -7,7 +7,7 @@ prometheus:
   server:
     service:
       type: LoadBalancer
-      servicePort:       8056
+      port:       8056
       targetPort: 8056
       loadBalancerIP: "192.168.68.75"
       annotations:
