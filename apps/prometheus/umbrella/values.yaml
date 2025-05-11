@@ -22,11 +22,11 @@ prometheus:
       tag: "27.13.0"
 
 
-  ## ───────────────────────────────────
-  ## Alertmanager (optional persistence)
-  ## ───────────────────────────────────
+## ───────────────────────────────────
+## Alertmanager (optional persistence)
+## ───────────────────────────────────
 
-  alertmanager:
-    persistentVolume:
-      enabled: false
+alertmanager:
+  persistentVolume:
+    enabled: false
 
