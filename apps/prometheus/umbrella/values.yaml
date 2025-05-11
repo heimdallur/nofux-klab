@@ -5,6 +5,13 @@ prometheus:
   ## ───────────────────────────────────
 
   server:
+    ports:
+      - name: http
+        nodePort: 31855
+        port: 8056
+        protocol: TCP
+        targetPort: 9090
+
     service:
       type: LoadBalancer
       port:       8056
