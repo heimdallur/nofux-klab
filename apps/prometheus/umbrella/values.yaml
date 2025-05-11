@@ -15,18 +15,11 @@ prometheus:
         metallb.universe.tf/allow-shared-ip:  "true"
 
     persistentVolume:
-      enabled:      true
-      storageClass: local-path
-      accessModes:
-        - ReadWriteOnce
-      size:         10Gi
-
-    statefulSet:
-      enabled: true
+      enabled: false
 
     image:
       repository: prometheus-community/prometheus
-      tag:        "27.13.0"
+      tag: "27.13.0"
 
 
   ## ───────────────────────────────────
@@ -35,8 +28,5 @@ prometheus:
 
   alertmanager:
     persistentVolume:
-      enabled:      true
-      storageClass: local-path
-      accessModes:
-        - ReadWriteOnce
-      size:         2Gi
+      enabled: false
+
