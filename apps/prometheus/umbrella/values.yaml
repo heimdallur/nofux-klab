@@ -1,33 +1,42 @@
-grafana:
-  adminUser: klab
-  adminPassword: strongpassword
+prometheus:
 
-  service:
-    type: LoadBalancer
-    name: http
-    port: 8056
-    targetPort: 8056
-    loadBalancerIP: "192.168.68.75"
-    annotations:
-      metallb.universe.tf/address-pool: cheap
-      metallb.universe.tf/allow-shared-ip: "true"
+  ## ───────────────────────────────────
+  ## Prometheus Server
+  ## ───────────────────────────────────
 
   server:
+    service:
+      type: LoadBalancer
+      port:       8056
+      targetPort: 8056
+      loadBalancerIP: "192.168.68.75"
+      annotations:
+        metallb.universe.tf/address-pool:      cheap
+        metallb.universe.tf/allow-shared-ip:  "true"
+
     persistentVolume:
-      enabled: true
-      size: 5Gi
+      enabled:      true
       storageClass: local-path
       accessModes:
         - ReadWriteOnce
+      size:         10Gi
+
+    statefulSet:
+      enabled: true
+
+    image:
+      repository: prometheus-community/prometheus
+      tag:        "27.13.0"
+
+
+  ## ───────────────────────────────────
+  ## Alertmanager (optional persistence)
+  ## ───────────────────────────────────
 
   alertmanager:
     persistentVolume:
-      enabled: true
-      size: 2Gi
+      enabled:      true
       storageClass: local-path
       accessModes:
         - ReadWriteOnce
-
-  image:
-    repository: prometheus-community/prometheus
-    tag: 27.13.0
+      size:         2Gi
