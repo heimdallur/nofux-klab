@@ -1,24 +1,12 @@
 prometheus:
-
-  ## ───────────────────────────────────
-  ## Prometheus Server
-  ## ───────────────────────────────────
-
   server:
-    ports:
-    - name: http
-      nodePort: 31002
-      port: 8056
-      protocol: TCP
-      targetPort: 9090
-
     service:
       type: LoadBalancer
       port:       8056
-      targetPort: 8056
+      targetPort: 9090
       loadBalancerIP: "192.168.68.75"
       annotations:
-        metallb.universe.tf/address-pool:      cheap
+        metallb.universe.tf/address-pool:     cheap
         metallb.universe.tf/allow-shared-ip:  "true"
 
     persistentVolume:
@@ -26,14 +14,9 @@ prometheus:
 
     image:
       repository: prometheus-community/prometheus
-      tag: "27.13.0"
+      tag:        "27.13.0"
 
-
-  ## ───────────────────────────────────
-  ## Alertmanager (optional persistence)
-  ## ───────────────────────────────────
-
-alertmanager:
-  persistentVolume:
-    enabled: false
+  alertmanager:
+    persistentVolume:
+      enabled: false
 
