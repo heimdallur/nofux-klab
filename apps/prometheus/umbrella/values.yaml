@@ -19,7 +19,7 @@ prometheus:
 
     image:
       repository: prometheus-community/prometheus
-      tag:        "27.13.0"
+      tag:        "27.12.1"
 
   alertmanager:
     persistentVolume:
