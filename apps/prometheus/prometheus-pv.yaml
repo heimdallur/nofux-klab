@@ -11,5 +11,5 @@ spec:
   volumeMode: Filesystem
   hostPath:
     path: /srv/prometheus-data
-    type: Directory
+    type: DirectoryOrCreate
   persistentVolumeReclaimPolicy: Delete
