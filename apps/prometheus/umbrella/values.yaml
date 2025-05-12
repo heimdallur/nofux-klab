@@ -17,9 +17,11 @@ prometheus:
     persistentVolume:
       enabled: false
 
-    image:
-      repository: prometheus-community/prometheus
-      tag:        "27.12.1"
+
+  image:
+    repository: prom/prometheus
+    tag: v27.12.1
+    pullPolicy: IfNotPresent
 
   alertmanager:
     persistentVolume:
