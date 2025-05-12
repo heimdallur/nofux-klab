@@ -8,7 +8,7 @@ prometheus:
         metallb.universe.tf/allow-shared-ip:  "true"
 
       nodePort: 32728
-      port: 8056
+      servicePort: 8056
 
     persistentVolume:
       enabled: false
