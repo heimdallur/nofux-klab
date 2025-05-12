@@ -10,6 +10,6 @@ spec:
   storageClassName: ""
   volumeMode: Filesystem
   hostPath:
-    path: /var/lib/prometheus-data
+    path: /tmp/prometheus-data
     type: DirectoryOrCreate
   persistentVolumeReclaimPolicy: Delete
