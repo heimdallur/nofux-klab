@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/heimdallur/nofux-klab
     targetRevision: main
-    path: apps/pi-hole
+    path: apps/pihole
 
   syncPolicy:
     automated:
