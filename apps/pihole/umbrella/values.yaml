@@ -10,6 +10,9 @@ pihole:
     timezone: "Europe/London"
   persistence:
     enabled: false
+  containerPorts:
+    http: 8081
+
   
 
   image:
