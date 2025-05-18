@@ -4,10 +4,13 @@ metadata:
   name: pihole
   namespace: argocd
 spec:
-  description: PiHol DNS for Home Lab
+  description: Pi-Hole DNS for Home Lab
   destinations:
     - name: in-cluster
       namespace: 'pihole'
+      server: https://kubernetes.default.svc
+    - name: in-cluster
+      namespace: 'argocd'
       server: https://kubernetes.default.svc
   sourceRepos:
   - https://github.com/heimdallur/nofux-klab.git
