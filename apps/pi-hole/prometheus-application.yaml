@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pihole
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: pihole
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: pihole
+  source:
+    repoURL: https://github.com/heimdallur/nofux-klab
+    targetRevision: main
+    path: apps/pi-hole
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,43 @@
+pihole:
+  service:
+    type: LoadBalancer
+    name: http
+    port: 8081
+    targetPort: 8081
+    loadBalancerIP: "192.168.68.75"
+    annotations:
+      metallb.universe.tf/address-pool: cheap
+      metallb.universe.tf/allow-shared-ip: "true"
+    timezone: "Europe/London"
+    persistence:
+      enabled: false
+  
+
+  image:
+    repository: savepointsam/pihole
+    tag: 0.2.0
+
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: 8081
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+
+  livenessProbe:
+    httpGet:
+      path: /api/health
+      port: 8081
+    initialDelaySeconds: 60
+    periodSeconds: 30
+    timeoutSeconds: 5
+    failureThreshold: 6
+
+  startupProbe:
+    httpGet:
+      path: /api/health
+      port: 8081
+    periodSeconds: 10
+    failureThreshold: 30

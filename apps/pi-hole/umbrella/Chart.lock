@@ -1,0 +1,6 @@
+dependencies:
+- name: pihole
+  repository: https://savepointsam.github.io/charts
+  version: 0.2.0
+digest: sha256:b99aefad196dc223abdc39a2a4675b18edb7a65a1929e42a1ac8d88b437231d2
+generated: "2025-05-18T18:05:02.1635611+01:00"

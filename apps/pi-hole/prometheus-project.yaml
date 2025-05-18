@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: pihole
+  namespace: argocd
+spec:
+  description: Pi-Hole DNS for Home Lab
+  destinations:
+    namespace: 'pihole'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/heimdallur/nofux-klab.git
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
