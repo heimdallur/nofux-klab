@@ -2,8 +2,7 @@ pihole:
   service:
     type: LoadBalancer
     loadBalancerIP: "192.168.68.75"
-    nodePort: 31375
-    ports:
+    nodePorts:
       http: 8081
     annotations:
       metallb.universe.tf/address-pool: cheap
