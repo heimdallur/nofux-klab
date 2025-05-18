@@ -13,34 +13,34 @@ pihole:
   persistence:
     enabled: false
   
-  containerPorts:
-    http: 8081
+  # containerPorts:
+  #   http: 8081
 
   image:
     repository: savepointsam/pihole
     tag: 0.2.0
 
-  readinessProbe:
-    httpGet:
-      path: /api/health
-      port: 8081
-    initialDelaySeconds: 30
-    periodSeconds: 10
-    timeoutSeconds: 5
-    failureThreshold: 6
+  # readinessProbe:
+  #   httpGet:
+  #     path: /api/health
+  #     port: 8081
+  #   initialDelaySeconds: 30
+  #   periodSeconds: 10
+  #   timeoutSeconds: 5
+  #   failureThreshold: 6
 
-  livenessProbe:
-    httpGet:
-      path: /api/health
-      port: 8081
-    initialDelaySeconds: 60
-    periodSeconds: 30
-    timeoutSeconds: 5
-    failureThreshold: 6
+  # livenessProbe:
+  #   httpGet:
+  #     path: /api/health
+  #     port: 8081
+  #   initialDelaySeconds: 60
+  #   periodSeconds: 30
+  #   timeoutSeconds: 5
+  #   failureThreshold: 6
 
-  startupProbe:
-    httpGet:
-      path: /api/health
-      port: 8081
-    periodSeconds: 10
-    failureThreshold: 30
+  # startupProbe:
+  #   httpGet:
+  #     path: /api/health
+  #     port: 8081
+  #   periodSeconds: 10
+  #   failureThreshold: 30
