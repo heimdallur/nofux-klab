@@ -1,10 +1,9 @@
 pihole:
   service:
     type: LoadBalancer
-    name: http
-    port: 8081
-    targetPort: 8081
     loadBalancerIP: "192.168.68.75"
+    nodePort: 32323
+    servicePort: 8081
     annotations:
       metallb.universe.tf/address-pool: cheap
       metallb.universe.tf/allow-shared-ip: "true"
