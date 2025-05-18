@@ -8,14 +8,13 @@ pihole:
       metallb.universe.tf/address-pool: cheap
       metallb.universe.tf/allow-shared-ip: "true"
   
+  timezone: "Europe/London"
+  
   persistence:
     enabled: false
   
   containerPorts:
     http: 8081
-    env:
-      - name: WEB_PORT
-        value: 8081
 
   image:
     repository: savepointsam/pihole
