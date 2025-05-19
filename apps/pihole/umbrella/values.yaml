@@ -14,8 +14,9 @@ pihole:
 
   pihole:
     image:
-      repository: savepointsam/pihole
-      tag: 0.2.0
+      registry: docker.io
+      repository: pihole/pihole
+      tag: "2023.05.0"
 
     timezone: "Europe/London"
 
