@@ -2,8 +2,7 @@ pihole:
   service:
     type: LoadBalancer
     loadBalancerIP: "192.168.68.75"
-    nodePort:
-      http: 8081
+    port: 8081
     annotations:
       metallb.universe.tf/address-pool: cheap
       metallb.universe.tf/allow-shared-ip: "true"
@@ -11,11 +10,11 @@ pihole:
   persistence:
     enabled: false
 
-  image:
-    repository: savepointsam/pihole
-    tag: 0.2.0
-
   pihole:
+    image:
+      repository: savepointsam/pihole
+      tag: 0.2.0
+
     timezone: "Europe/London"
     virtualHost: 8081
 
