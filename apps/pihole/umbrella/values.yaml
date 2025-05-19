@@ -16,7 +16,6 @@ pihole:
       tag: 0.2.0
 
     timezone: "Europe/London"
-    virtualHost: 8081
 
     readinessProbe:
       enabled: false
