@@ -22,4 +22,3 @@ prometheus:
   alertmanager:
     persistentVolume:
       enabled: false
-
