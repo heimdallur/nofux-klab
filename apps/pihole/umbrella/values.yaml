@@ -9,6 +9,7 @@ pihole:
       metallb.universe.tf/allow-shared-ip: "true"
   
   timezone: "Europe/London"
+  virtualHost: 8081
 
   
   persistence:
@@ -21,7 +22,8 @@ pihole:
     repository: savepointsam/pihole
     tag: 0.2.0
 
-  # readinessProbe:
+  readinessProbe:
+    enabled: false
   #   httpGet:
   #     path: /api/health
   #     port: 8081
@@ -30,7 +32,8 @@ pihole:
   #   timeoutSeconds: 5
   #   failureThreshold: 6
 
-  # livenessProbe:
+  livenessProbe:
+    enabled: false
   #   httpGet:
   #     path: /api/health
   #     port: 8081
@@ -39,7 +42,8 @@ pihole:
   #   timeoutSeconds: 5
   #   failureThreshold: 6
 
-  # startupProbe:
+  startupProbe:
+    enabled: false
   #   httpGet:
   #     path: /api/health
   #     port: 8081
